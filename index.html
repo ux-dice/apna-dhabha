@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apna Dhabha — Ghar Jaisa Khana</title>
+  <meta name="description" content="Order authentic Indian dhaba food online. Fresh, delicious, and delivered fast.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍛</text></svg>">
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loader-logo">Apna <span>Dhabha</span> 🍛</div>
+    <div class="loader-dots"><span></span><span></span><span></span></div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="navbar-logo">
+      <span class="logo-icon">🍛</span>
+      Apna <span>Dhabha</span>
+    </a>
+    <div class="navbar-links" id="navbar-links">
+      <a href="index.html" class="active">🏠 Home</a>
+      <a href="menu.html">📋 Menu</a>
+      <a href="cart.html" class="cart-link">
+        🛒 Cart
+        <span class="cart-badge" id="cart-badge-nav">0</span>
+      </a>
+      <button id="dark-toggle" class="dark-toggle" title="Toggle Dark Mode"></button>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">🌶️ 100% Authentic Indian Flavors</div>
+      <h1>
+        Dil Se <span class="highlight">Desi Khana</span>
+        Delivered Fresh
+      </h1>
+      <p>From the heart of Punjab to your doorstep — real dhaba flavors made with love, spice and tradition.</p>
+
+      <!-- Hero Search -->
+      <div class="search-bar">
+        <input type="text" id="hero-search" placeholder="Search biryani, paneer, chai..." autocomplete="off">
+        <button id="search-btn">🔍 Search</button>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat"><strong>15+</strong><small>Dishes</small></div>
+        <div class="hero-stat"><strong>4.8★</strong><small>Rating</small></div>
+        <div class="hero-stat"><strong>30 min</strong><small>Delivery</small></div>
+      </div>
+    </div>
+
+    <!-- Floating Food Emojis -->
+    <div class="hero-floats" aria-hidden="true">
+      <span class="hero-float">🍛</span>
+      <span class="hero-float">🫓</span>
+      <span class="hero-float">🍲</span>
+      <span class="hero-float">🍵</span>
+    </div>
+  </section>
+
+  <!-- Category Pills -->
+  <section class="categories-section">
+    <div class="section-title">Browse by Category</div>
+    <div class="category-pills">
+      <button class="category-pill active" data-cat="all">🍽️ All Items</button>
+      <button class="category-pill" data-cat="curry">🍲 Curries</button>
+      <button class="category-pill" data-cat="rice">🍛 Rice</button>
+      <button class="category-pill" data-cat="bread">🫓 Breads</button>
+      <button class="category-pill" data-cat="snacks">🥟 Snacks</button>
+      <button class="category-pill" data-cat="starters">🍢 Starters</button>
+      <button class="category-pill" data-cat="drinks">🥛 Drinks</button>
+      <button class="category-pill" data-cat="sweets">🍮 Sweets</button>
+    </div>
+  </section>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar">
+    <span class="filter-label">Filter:</span>
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="veg">
+      <span class="dot dot-green"></span> Veg
+    </button>
+    <button class="filter-btn" data-filter="nonveg">
+      <span class="dot dot-red"></span> Non-Veg
+    </button>
+    <select id="sort-select" class="sort-select">
+      <option value="default">Sort: Default</option>
+      <option value="price-asc">Price: Low to High</option>
+      <option value="price-desc">Price: High to Low</option>
+      <option value="rating">Top Rated</option>
+    </select>
+  </div>
+
+  <!-- Menu Section -->
+  <section class="menu-section" id="menu-section">
+    <div class="section-title">🔥 Our Menu</div>
+    <!-- Search Bar (inline) -->
+    <div style="margin-bottom:24px; max-width:420px;">
+      <div class="search-bar" style="border-radius:12px; box-shadow:var(--shadow-card); border:2px solid var(--border);">
+        <input type="text" id="search-input" placeholder="Search dishes..." style="background:transparent;" autocomplete="off">
+        <button style="border-radius:0 10px 10px 0;">🔍</button>
+      </div>
+    </div>
+    <div class="food-grid" id="food-grid">
+      <!-- Cards rendered by JS -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand-name">Apna <span>Dhabha</span> 🍛</div>
+        <p>Bringing the authentic taste of Indian dhabas to your home. Made fresh, delivered fast, with love from Punjab.</p>
+        <div class="social-links">
+          <a class="social-link" href="#" aria-label="Instagram">📸</a>
+          <a class="social-link" href="#" aria-label="Facebook">👍</a>
+          <a class="social-link" href="#" aria-label="Twitter">🐦</a>
+          <a class="social-link" href="#" aria-label="YouTube">▶️</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="cart.html">My Cart</a></li>
+          <li><a href="checkout.html">Checkout</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Categories</h4>
+        <ul>
+          <li><a href="#">Curries</a></li>
+          <li><a href="#">Biryani & Rice</a></li>
+          <li><a href="#">Breads</a></li>
+          <li><a href="#">Snacks</a></li>
+          <li><a href="#">Drinks & Chai</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <ul class="footer-contact">
+          <li><span class="icon">📍</span> Sector 17, Chandigarh, Punjab</li>
+          <li><span class="icon">📞</span> +91 98765 43210</li>
+          <li><span class="icon">📧</span> hello@apnadhabha.in</li>
+          <li><span class="icon">⏰</span> Open: 8 AM – 11 PM, Daily</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 Apna Dhabha. Made with ❤️ & lots of ghee.</span>
+      <span>Privacy Policy · Terms · Refund Policy</span>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

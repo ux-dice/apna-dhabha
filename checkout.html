@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — Apna Dhabha</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✅</text></svg>">
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loader-logo">Apna <span>Dhabha</span> 🍛</div>
+    <div class="loader-dots"><span></span><span></span><span></span></div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container"></div>
+
+  <!-- Order Success Modal -->
+  <div class="modal-overlay hidden" id="success-modal">
+    <div class="order-success-modal">
+      <div class="success-checkmark">✅</div>
+      <h2>Order Placed!</h2>
+      <p>Yayyy! Your delicious food is being prepared. Estimated delivery in <strong>25–35 minutes</strong>. Sit back and relax! 🎉</p>
+      <div class="order-id" id="order-id-display">Order ID: AD12345678</div>
+      <a href="index.html" class="back-home-btn" onclick="localStorage.removeItem('apna_dhabha_cart')">
+        Back to Home 🏠
+      </a>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="navbar-logo">
+      <span class="logo-icon">🍛</span>
+      Apna <span>Dhabha</span>
+    </a>
+    <div class="navbar-links" id="navbar-links">
+      <a href="index.html">🏠 Home</a>
+      <a href="menu.html">📋 Menu</a>
+      <a href="cart.html" class="cart-link">
+        🛒 Cart
+        <span class="cart-badge" id="cart-badge-nav">0</span>
+      </a>
+      <button id="dark-toggle" class="dark-toggle" title="Toggle Dark Mode"></button>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1>💳 Checkout</h1>
+    <p>Almost there! Fill in your details to place your order</p>
+  </div>
+
+  <!-- Progress Steps -->
+  <div style="padding: 20px 6%; display:flex; gap:0; align-items:center; justify-content:center; max-width:500px; margin:0 auto;">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+      <div style="width:36px;height:36px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;">✓</div>
+      <span style="font-size:0.75rem;color:var(--text-muted);">Cart</span>
+    </div>
+    <div style="flex:1;height:2px;background:var(--primary);margin:0 4px 18px;"></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+      <div style="width:36px;height:36px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;">2</div>
+      <span style="font-size:0.75rem;color:var(--primary);font-weight:600;">Details</span>
+    </div>
+    <div style="flex:1;height:2px;background:var(--border);margin:0 4px 18px;"></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+      <div style="width:36px;height:36px;border-radius:50%;background:var(--bg2);border:2px solid var(--border);color:var(--text-muted);display:flex;align-items:center;justify-content:center;font-weight:700;">3</div>
+      <span style="font-size:0.75rem;color:var(--text-muted);">Confirm</span>
+    </div>
+  </div>
+
+  <!-- Checkout Layout -->
+  <div class="checkout-layout">
+    <!-- Form Section -->
+    <div class="checkout-form-section">
+      <form id="checkout-form">
+
+        <!-- Delivery Address -->
+        <div class="form-card">
+          <h3>📍 Delivery Address</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name *</label>
+              <input type="text" placeholder="Rahul" required>
+            </div>
+            <div class="form-group">
+              <label>Last Name *</label>
+              <input type="text" placeholder="Sharma" required>
+            </div>
+            <div class="form-group">
+              <label>Phone Number *</label>
+              <input type="tel" placeholder="+91 98765 43210" pattern="[0-9]{10}" required>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="rahul@email.com">
+            </div>
+            <div class="form-group full">
+              <label>Full Address *</label>
+              <input type="text" placeholder="House No, Street, Area..." required>
+            </div>
+            <div class="form-group">
+              <label>City *</label>
+              <input type="text" placeholder="Chandigarh" required>
+            </div>
+            <div class="form-group">
+              <label>Pincode *</label>
+              <input type="text" placeholder="160017" pattern="[0-9]{6}" required>
+            </div>
+            <div class="form-group full">
+              <label>Landmark / Delivery Instructions</label>
+              <textarea placeholder="Near main gate, ring doorbell twice..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Method -->
+        <div class="form-card">
+          <h3>💳 Payment Method</h3>
+          <div class="payment-methods">
+            <label class="payment-option selected">
+              <input type="radio" name="payment" value="upi" checked>
+              <span class="payment-icon">📱</span>
+              <div>
+                <div class="payment-name">UPI Payment</div>
+                <div class="payment-desc">Google Pay, PhonePe, Paytm, BHIM</div>
+              </div>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment" value="cod">
+              <span class="payment-icon">💵</span>
+              <div>
+                <div class="payment-name">Cash on Delivery</div>
+                <div class="payment-desc">Pay when your food arrives</div>
+              </div>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment" value="card">
+              <span class="payment-icon">💳</span>
+              <div>
+                <div class="payment-name">Credit / Debit Card</div>
+                <div class="payment-desc">Visa, Mastercard, RuPay</div>
+              </div>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment" value="netbanking">
+              <span class="payment-icon">🏦</span>
+              <div>
+                <div class="payment-name">Net Banking</div>
+                <div class="payment-desc">All major Indian banks supported</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Special Instructions -->
+        <div class="form-card">
+          <h3>📝 Special Instructions</h3>
+          <div class="form-group">
+            <label>Any special requests?</label>
+            <textarea placeholder="Extra spicy, no onions, less oil... we'll try our best!"></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="place-order-btn">
+          🎉 Place Order Now
+        </button>
+        <p style="text-align:center;font-size:0.8rem;color:var(--text-muted);margin-top:12px;">
+          🔒 Your information is 100% secure and encrypted
+        </p>
+      </form>
+    </div>
+
+    <!-- Order Summary -->
+    <aside class="order-summary">
+      <h2>🧾 Order Summary</h2>
+
+      <!-- Mini Cart Items -->
+      <div id="checkout-items-list" style="margin-bottom:16px;"></div>
+
+      <div class="summary-row"><span>Subtotal</span><span id="chk-subtotal">₹0</span></div>
+      <div class="summary-row"><span>Delivery</span><span id="chk-delivery">₹40</span></div>
+      <div class="summary-row"><span>GST (5%)</span><span id="chk-tax">₹0</span></div>
+      <div class="summary-total">
+        <span>Total</span>
+        <span id="chk-total">₹0</span>
+      </div>
+
+      <div style="margin-top:20px;padding:14px;background:var(--bg2);border-radius:var(--radius-sm);font-size:0.82rem;color:var(--text-muted);line-height:1.6;">
+        <strong style="color:var(--text);">🕐 Delivery Time</strong><br>
+        Estimated 25–35 mins after order confirmation
+      </div>
+
+      <div style="margin-top:12px;padding:14px;background:rgba(42,157,143,0.08);border-radius:var(--radius-sm);font-size:0.82rem;color:var(--accent2);border:1px solid rgba(42,157,143,0.2);">
+        ✅ Fresh & hygienic preparation guaranteed
+      </div>
+    </aside>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand-name">Apna <span>Dhabha</span> 🍛</div>
+        <p>Real Indian flavors, delivered fresh to your door every single time.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="cart.html">My Cart</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Help Centre</a></li>
+          <li><a href="#">Refund Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul class="footer-contact">
+          <li><span class="icon">📞</span> +91 98765 43210</li>
+          <li><span class="icon">📧</span> hello@apnadhabha.in</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 Apna Dhabha. Made with ❤️ & lots of ghee.</span>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Cart — Apna Dhabha</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>">
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loader-logo">Apna <span>Dhabha</span> 🍛</div>
+    <div class="loader-dots"><span></span><span></span><span></span></div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="navbar-logo">
+      <span class="logo-icon">🍛</span>
+      Apna <span>Dhabha</span>
+    </a>
+    <div class="navbar-links" id="navbar-links">
+      <a href="index.html">🏠 Home</a>
+      <a href="menu.html">📋 Menu</a>
+      <a href="cart.html" class="cart-link active">
+        🛒 Cart
+        <span class="cart-badge" id="cart-badge-nav">0</span>
+      </a>
+      <button id="dark-toggle" class="dark-toggle" title="Toggle Dark Mode"></button>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1>🛒 Your Cart</h1>
+    <p>Review your items and proceed to checkout</p>
+  </div>
+
+  <!-- Empty Cart -->
+  <div id="empty-cart" class="empty-cart hidden">
+    <span class="big-emoji">🛒</span>
+    <h2>Your cart is empty!</h2>
+    <p>Looks like you haven't added anything yet. Explore our delicious menu!</p>
+    <a href="menu.html" class="btn-outline">Browse Menu</a>
+  </div>
+
+  <!-- Cart Layout -->
+  <div class="cart-layout" id="cart-layout">
+    <!-- Cart Items -->
+    <div class="cart-items-section">
+      <h2>🍽️ Order Items</h2>
+      <div id="cart-items-container">
+        <!-- Items rendered by JS -->
+      </div>
+      <div style="margin-top: 16px;">
+        <a href="menu.html" style="color: var(--primary); font-weight: 600; font-size: 0.9rem;">
+          + Add more items
+        </a>
+      </div>
+    </div>
+
+    <!-- Order Summary -->
+    <aside class="order-summary">
+      <h2>💰 Order Summary</h2>
+      <div class="summary-row"><span>Subtotal</span><span id="summary-subtotal">₹0</span></div>
+      <div class="summary-row">
+        <span>Delivery Charge</span>
+        <span id="summary-delivery">₹40</span>
+      </div>
+      <div class="summary-row">
+        <span>GST (5%)</span>
+        <span id="summary-tax">₹0</span>
+      </div>
+      <div style="font-size:0.78rem;color:var(--accent2);margin:4px 0 8px;font-weight:500;">
+        🎉 Free delivery on orders above ₹300!
+      </div>
+      <div class="summary-total">
+        <span>Total Payable</span>
+        <span id="summary-total">₹0</span>
+      </div>
+      <a href="checkout.html">
+        <button class="checkout-btn" id="checkout-btn">
+          Proceed to Checkout →
+        </button>
+      </a>
+      <div style="margin-top:16px;text-align:center;font-size:0.8rem;color:var(--text-muted);">
+        🔒 Safe & Secure Checkout · UPI · COD · Cards
+      </div>
+    </aside>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand-name">Apna <span>Dhabha</span> 🍛</div>
+        <p>Real Indian flavors, delivered fresh to your door every single time.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="cart.html">My Cart</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Refund Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul class="footer-contact">
+          <li><span class="icon">📞</span> +91 98765 43210</li>
+          <li><span class="icon">📧</span> hello@apnadhabha.in</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 Apna Dhabha. Made with ❤️ & lots of ghee.</span>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
