@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🍛 Apna Dhabha — Food Ordering Website
 
 > A modern, Zomato-inspired Indian food ordering web app built with pure HTML, CSS, and JavaScript.
@@ -126,3 +127,6 @@ Made with ❤️ and lots of 🧈 ghee for college project submission.
 ---
 
 *© 2024 Apna Dhabha — Ghar Jaisa Khana*
+=======
+# apna-dhabha
+>>>>>>> a793fee22ae723249dba1823b7cb17fe091268eb
